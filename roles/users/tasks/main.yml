@@ -24,7 +24,7 @@
     backup: yes
     group: kpnet
     owner: jlim
-    mode: 0644
+    mode: 0600
     content: "-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEApgtqIQZhqMv03vHChTGr02AFQTVXAD5TPdwLFqqiOoVUko2B
 vjO4jPKJxJPFowP8We7EJQ/Wfmy8Qd6KnpzFNO+kMXQj7gGNO7dkwDPyOJhv8u/H
