@@ -20,7 +20,12 @@
     - nmap
     - tcpdump
     - lsof
- 
+    
+- name: install epel stuff
+  yum: name={{item}} state=installed
+  with_items:
+    - fail2ban
+    
 - name: remove NetworkManager
   yum: name={{item}} state=absent
   with_items:
@@ -46,6 +51,23 @@
     line="if $programname == \"systemd\" and ($msg contains \"Starting Session\" or $msg contains \"Started Session\" or $msg contains \"Created slice\" or $msg contains \"Starting user-\" or $msg contains \"Removed slice\" or $msg contains \"Stopping user-\" or $msg contains \"User Slice\") then stop"
     state=present
     create=true
+
+- name: create id_rsa.pub as 0644
+  copy:
+    dest: /etc/fail2ban/jail.local
+    backup: yes
+    group: root
+    owner: root
+    mode: 0644
+    content: "[DEFAULT]
+# Ban hosts for one hour:
+bantime = 3600
+
+# Override /etc/fail2ban/jail.d/00-firewalld.conf:
+banaction = iptables-multiport
+
+[sshd]
+enabled = true"
 
 - name: reload ansible-facts
   setup:
