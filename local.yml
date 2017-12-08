@@ -11,6 +11,7 @@
 #  - etc_issue
     - sudoers
     - fail2ban
+    - rsyslog
 #  - iptables
 #  - ntpd
 #  - sysctl

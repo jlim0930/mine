@@ -40,13 +40,6 @@
     - firewalld
     - postfix
 
-- name: add ignore.conf to rsyslog for Sessions and Slice lines
-  lineinfile: dest=/etc/rsyslog.d/ignore.conf
-    regexp="^"
-    line="if $programname == \"systemd\" and ($msg contains \"Starting Session\" or $msg contains \"Started Session\" or $msg contains \"Created slice\" or $msg contains \"Starting user-\" or $msg contains \"Removed slice\" or $msg contains \"Stopping user-\" or $msg contains \"User Slice\") then stop"
-    state=present
-    create=true
-
 - name: reload ansible-facts
   setup:
 

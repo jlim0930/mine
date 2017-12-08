@@ -1,0 +1,6 @@
+---
+- name: rsyslog add ignore.conf to /etc/rsyslog.d to silence noise in messages
+  template: src=templates/ignore.conf.j2 dest=/etc/rsyslog.d/ignore.conf mode=0644 owner=root group=root
+
+- name: rsyslog service enabled and started
+  service: name=rsyslog enabled=yes state=restarted
