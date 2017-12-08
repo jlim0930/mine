@@ -20,6 +20,7 @@
     - nmap
     - tcpdump
     - lsof
+    - xorg-x11-xauth
 
 - name: remove NetworkManager
   yum: name={{item}} state=absent
