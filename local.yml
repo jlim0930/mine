@@ -7,12 +7,8 @@
     - common
     - chrony
     - users
-#  - auditd
-#  - etc_issue
     - sudoers
     - fail2ban
     - rsyslog
-#  - iptables
-#  - ntpd
-#  - sysctl
+    - sshd
 #  - mail # This section should always be last
