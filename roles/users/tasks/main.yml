@@ -9,7 +9,7 @@
 - name: ensure jlim keys exist
   authorized_key: user=jlim key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmC2ohBmGoy/Te8cKFMavTYAVBNVcAPlM93AsWqqI6hVSSjYG+M7iM8onEk8WjA/xZ7sQlD9Z+bLxB3oqenMU076QxdCPuAY07t2TAM/I4mG/y78fBqZKHthJQ0+9bXcTbizTsysm+QUpPRH76Qr8z1sHcdRz85LBhXNJcakzHyKfJxFb162eW+Anzb5nsxWWNBrNH/P8siwHXPaS1wp1pqBfjak+ExmrOOmJltKcudVZ+dkGyYOAoN0uREsMSRztlL4sSouUV8VEZKlMZYnzrCUezUpY6hIlX/6wn0hj6LNzj2xDKNqJsHxKOW33M0Z4YIfoIsiD4+50foQmhTLap jlim@batz.home.local"
 
-- name: create id_rsa.pub
+- name: create id_rsa.pub as 0644
   copy:
     dest: /home/jlim/.ssh/id_rsa.pub
     backup: yes
@@ -18,7 +18,7 @@
     mode: 0644
     content: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmC2ohBmGoy/Te8cKFMavTYAVBNVcAPlM93AsWqqI6hVSSjYG+M7iM8onEk8WjA/xZ7sQlD9Z+bLxB3oqenMU076QxdCPuAY07t2TAM/I4mG/y78fBqZKHthJQ0+9bXcTbizTsysm+QUpPRH76Qr8z1sHcdRz85LBhXNJcakzHyKfJxFb162eW+Anzb5nsxWWNBrNH/P8siwHXPaS1wp1pqBfjak+ExmrOOmJltKcudVZ+dkGyYOAoN0uREsMSRztlL4sSouUV8VEZKlMZYnzrCUezUpY6hIlX/6wn0hj6LNzj2xDKNqJsHxKOW33M0Z4YIfoIsiD4+50foQmhTLap jlim@batz.home.local"
 
-- name: create id_rsa for the key
+- name: create id_rsa for the key as 0600
   copy:
     dest: /home/jlim/.ssh/id_rsa
     backup: yes
