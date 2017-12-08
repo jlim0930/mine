@@ -11,12 +11,12 @@
 
 - name: create id_rsa for the key
   copy:
-  dest: /home/jlim/.ssh/id_rsa
-  force: no
-  group: jlim
-  owner: jlim
-  mode: 0644
-  content: "-----BEGIN RSA PRIVATE KEY-----
+    dest: /home/jlim/.ssh/id_rsa
+    backup: yes
+    group: jlim
+    owner: jlim
+    mode: 0644
+    content: "-----BEGIN RSA PRIVATE KEY-----
 MIIEowIBAAKCAQEApgtqIQZhqMv03vHChTGr02AFQTVXAD5TPdwLFqqiOoVUko2B
 vjO4jPKJxJPFowP8We7EJQ/Wfmy8Qd6KnpzFNO+kMXQj7gGNO7dkwDPyOJhv8u/H
 wamSh7YSUNPvW13E24s07MrJvkFKT0R++kK/M9bB3HUc/OSwYVzSXGpMx8inycRW
@@ -42,5 +42,4 @@ LWWWiOhMycpUF688bWcXUjP3YYCaiMvldGemv8OZDYCIsGKnJkEpNG9QG3HNTPu7
 paBHqQKBgCrpNzt8XnzVTUD96NrURRtcvmhS4dloJB0nEZJzSiTYx2PXhwo/SG4j
 +g7v1hzkFXgr1/oL7x6uq1uMFxDuT6zvZhAHMO4LCFuA69MnHD2wx69tRZ3NuQUW
 Hgs4lpjX+/Zne8K2qgrU/c3Q91ucCdDkueoMi7uYJEH6USAKHGSQ
------END RSA PRIVATE KEY-----
-"
+-----END RSA PRIVATE KEY-----"
