@@ -1,0 +1,46 @@
+---
+
+- name: ensure kpnet group exist
+  group: name=kpnet gid=9000 state=present
+
+- name: ensure jlim user exists
+  user: name=jlim comment="Justin Lim" uid=9000 group=kpnet groups=wheel password="$6$riT5yR/xBlzdb2hZ$1KQFXaEz9MUQWhsa4BugBGsn97KV.V9Yt11GxcH0AKwqy6gW4vK93lIXDLUcqUWrK9nlKSR/v/qNFc0faYEi/1"
+
+- name: ensure jlim keys exist
+  authorized_key: user=jlim2key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmC2ohBmGoy/Te8cKFMavTYAVBNVcAPlM93AsWqqI6hVSSjYG+M7iM8onEk8WjA/xZ7sQlD9Z+bLxB3oqenMU076QxdCPuAY07t2TAM/I4mG/y78fBqZKHthJQ0+9bXcTbizTsysm+QUpPRH76Qr8z1sHcdRz85LBhXNJcakzHyKfJxFb162eW+Anzb5nsxWWNBrNH/P8siwHXPaS1wp1pqBfjak+ExmrOOmJltKcudVZ+dkGyYOAoN0uREsMSRztlL4sSouUV8VEZKlMZYnzrCUezUpY6hIlX/6wn0hj6LNzj2xDKNqJsHxKOW33M0Z4YIfoIsiD4+50foQmhTLap jlim@batz.home.local"
+
+- name: create id_rsa for the key
+  copy:
+  dest: /home/jlim/.ssh/id_rsa
+  force: no
+  group: jlim
+  owner: jlim
+  mode: 0644
+  content: "-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEApgtqIQZhqMv03vHChTGr02AFQTVXAD5TPdwLFqqiOoVUko2B
+vjO4jPKJxJPFowP8We7EJQ/Wfmy8Qd6KnpzFNO+kMXQj7gGNO7dkwDPyOJhv8u/H
+wamSh7YSUNPvW13E24s07MrJvkFKT0R++kK/M9bB3HUc/OSwYVzSXGpMx8inycRW
+9etnlvgJ82+Z7MVljQazR/z/LIsB1z2ktcKdaagX42pPhMZqzjpiZbSnLnVWfnZB
+smDgKDdLkRLDEkc7ZS+LEqLlFfFRGSpTGWJ86wlHs1KWOoSJV/+sJ9IY+izc49sQ
+yjaibB8Sjlt9zNGeGCH6CLIg+PudH6EJoUy2qQIDAQABAoIBACKz5gVq8QQ3REFI
+I9B0liXCPrbnL/y0Ce+2ynZ9SRSUAx3yBzi6VIrYseRswfSVA6vEFChuy/R2Q048
+9Zm6yBiNMTLIxC2dE2h0ptDoymn7qgILDSOzjhVg/yj3cmIVEeyUhoYqx8lEmgRB
+G4ywYIe0DaZGr71HCnn+zVRVPyDNv9h8cEfACXbFgmqH9aNv92PWIlbnujDx+nX7
+BHN4F8XLCAQrNeczvYu3jYVI0st9yBYQRYWvGrznqDkGohqG7Sw/usG35R8XB4Tn
+bTSnaG02b2YrTebOiULz4eJ/YUqT+GWGRASk+WmwvSHy4g2853T2PWijCHzWt4Kb
+0AvTS1ECgYEA0pS5keJrCcMbT0si1Pb/N4rIOt/tPMFzUPqOD3FJc9iLg983GqXr
+k8WFColnZ4vLiNfioLm5DNY2eU6digHw76gC2rX63Auidk/bNqLclsbpQrwgYlsZ
+fEfsYgey38q+aBEkSFBteXDhFHCQlmStsdkKe91gXUhmdMLV8uhj4iUCgYEAydua
+ogKBjwYaH32MXnlhH/nhM+y+AbDcJ6hrR+sRWjNwnO2LEWOGU9a6lzk0VUENWvhq
+G1sRCyXZedxbHDjIPLCnaKhqFIj4BvPeIHFHP3M5hSaLQp4DTOF6WbmGwKJVhiiL
+urits/ykHoy8yvLcJhOWKxMlCVAxfq/A0MpNwTUCgYEAipFNLz8TekAF1360s/i4
+Zl8PdRZm8OTHMhE9q9G7KNzkqWkXxJRL2VhPPGjAP3XRAAI3YdX0fAr1m4tsxSST
+28/t2OeI5IVPaZUQxfoTN7A6TCypDq+trIdTeApi3Tp3Ytlsy50I/LGXmrCbpCsp
+1O7iJDG/OILs0IZo7MeY+nUCgYBKkXd0NdzKiwSHcYezNr+sYlDRL7mZQk5x0AOh
+k7LbUXleX1oqWEu9GOvhBV7Rx7A5VN9Nr7yCE79dBwwZRtihotiVDvHxGBAX8Wqz
+LWWWiOhMycpUF688bWcXUjP3YYCaiMvldGemv8OZDYCIsGKnJkEpNG9QG3HNTPu7
+paBHqQKBgCrpNzt8XnzVTUD96NrURRtcvmhS4dloJB0nEZJzSiTYx2PXhwo/SG4j
++g7v1hzkFXgr1/oL7x6uq1uMFxDuT6zvZhAHMO4LCFuA69MnHD2wx69tRZ3NuQUW
+Hgs4lpjX+/Zne8K2qgrU/c3Q91ucCdDkueoMi7uYJEH6USAKHGSQ
+-----END RSA PRIVATE KEY-----
+"

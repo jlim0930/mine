@@ -1,0 +1,9 @@
+---
+# tasks file for sudoers
+
+- name: ensure sudo is installed
+  yum: name=sudo state=installed
+
+- name: ensure sudoers file is valid
+  lineinfile: path=/etc/sudoers state=present regexp="^jlim" line="jlim	ALL=(ALL)	NOPASSWD:ALL" validate="visudo -cf %s" owner=root group=root mode=0440
+  

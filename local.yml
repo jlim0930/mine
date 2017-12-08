@@ -1,0 +1,17 @@
+---
+- name: bootstrap personal servers
+  hosts: all
+#  become: true
+#  become_user: root
+  roles:
+    - common
+    - chrony
+    - users
+#  - auditd
+#  - etc_issue
+    - sudoers
+#  - iptables
+#  - ntpd
+#  - sysctl
+#  - ssh_keys
+#  - mail # This section should always be last

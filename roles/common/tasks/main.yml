@@ -1,0 +1,38 @@
+---
+- name: install libselinux-python
+  yum: name=libselinux-python state=present
+
+- name: ensure selinux set permissive
+  selinux: policy=targeted state=permissive
+
+- name: install various packages
+  yum: name={{item}} state=installed
+  with_items:
+    - epel-release
+    - bash-completion
+    - bash-completion-extras
+    - vim-enhanced
+    - bind-utils
+    - net-tools
+    - lftp
+    - wget
+    - screen
+    - nmap
+    - tcpdump
+    - lsof
+
+- name: ensure system is updated
+  yum: name=* state=latest
+
+- name: ensure various services are disabled
+  service: name={{item}} enabled=no
+  with_items:
+    - auditd
+    - NetworkManager
+    - rpcbind
+    - firewalld
+    - postfix
+
+- name: reload ansible-facts
+  setup:
+
