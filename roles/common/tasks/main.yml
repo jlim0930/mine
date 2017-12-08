@@ -20,12 +20,12 @@
     - nmap
     - tcpdump
     - lsof
-    
+
 - name: install epel stuff
   yum: name={{item}} state=installed
   with_items:
     - fail2ban
-    
+
 - name: remove NetworkManager
   yum: name={{item}} state=absent
   with_items:
