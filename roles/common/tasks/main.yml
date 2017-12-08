@@ -45,6 +45,11 @@
     - firewalld
     - postfix
 
+- name: ensure various services are enabled
+  service: name={{item}} enabled=yes
+  with_items:
+    - fail2ban
+
 - name: add ignore.conf to rsyslog for Sessions and Slice lines
   lineinfile: dest=/etc/rsyslog.d/ignore.conf
     regexp="^"
@@ -52,22 +57,8 @@
     state=present
     create=true
 
-- name: create id_rsa.pub as 0644
-  copy:
-    dest: /etc/fail2ban/jail.local
-    backup: yes
-    group: root
-    owner: root
-    mode: 0644
-    content: "[DEFAULT]
-# Ban hosts for one hour:
-bantime = 3600
-
-# Override /etc/fail2ban/jail.d/00-firewalld.conf:
-banaction = iptables-multiport
-
-[sshd]
-enabled = true"
+- name: add jail.local to /etc/fail2ban
+  template: src=templates/jail.local.j2 dest=/etc/fail2ban/jail.local
 
 - name: reload ansible-facts
   setup:
