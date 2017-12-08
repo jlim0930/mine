@@ -1,4 +1,7 @@
 ---
+- name: ensure ntp package is not installed
+  yum: name=ntp state=absent
+
 - name: ensure chrony installed
   yum: name=chrony state=installed
 

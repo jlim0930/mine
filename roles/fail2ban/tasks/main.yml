@@ -1,0 +1,10 @@
+---
+- name: fail2ban install
+  yum: name=fail2ban state=installed
+
+- name: fail2ban create jail.local to /etc/fail2ban/
+  template: src=templates/jail.local.j2 dest=/etc/fail2ban/jail.local mode=0644 owner=root group=root
+
+- name: fail2ban service enabled and started
+  service: name=fail2ban enabled=yes state=started
+

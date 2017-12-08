@@ -10,8 +10,8 @@
 #  - auditd
 #  - etc_issue
     - sudoers
+    - fail2ban
 #  - iptables
 #  - ntpd
 #  - sysctl
-#  - ssh_keys
 #  - mail # This section should always be last

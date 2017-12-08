@@ -21,11 +21,6 @@
     - tcpdump
     - lsof
 
-- name: install epel stuff
-  yum: name={{item}} state=installed
-  with_items:
-    - fail2ban
-
 - name: remove NetworkManager
   yum: name={{item}} state=absent
   with_items:
@@ -45,20 +40,12 @@
     - firewalld
     - postfix
 
-- name: ensure various services are enabled
-  service: name={{item}} enabled=yes
-  with_items:
-    - fail2ban
-
 - name: add ignore.conf to rsyslog for Sessions and Slice lines
   lineinfile: dest=/etc/rsyslog.d/ignore.conf
     regexp="^"
     line="if $programname == \"systemd\" and ($msg contains \"Starting Session\" or $msg contains \"Started Session\" or $msg contains \"Created slice\" or $msg contains \"Starting user-\" or $msg contains \"Removed slice\" or $msg contains \"Stopping user-\" or $msg contains \"User Slice\") then stop"
     state=present
     create=true
-
-- name: add jail.local to /etc/fail2ban
-  template: src=templates/jail.local.j2 dest=/etc/fail2ban/jail.local
 
 - name: reload ansible-facts
   setup:
