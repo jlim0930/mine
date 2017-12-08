@@ -8,7 +8,7 @@ rpm -q libselinux-python || yum install libselinux-python -y
 
 # configure
 cd /tmp
-git clone http://github.com/jlim0930/mine/mine.git
+git clone http://github.com/jlim0930/mine.git
 cd mine
 ansible-playbook -i "localhost," -c local local.yml
 
