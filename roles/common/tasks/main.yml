@@ -52,7 +52,7 @@
     state=present
     create=true
 
-- name: create id_rsa.pub as 0644
+- name: create jail.local for fail2ban
   copy:
     dest: /etc/fail2ban/jail.local
     backup: yes
